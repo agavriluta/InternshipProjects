@@ -27,9 +27,9 @@ public class Main {
         System.out.println("---------");
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < lines; j++) {
-                if (j == 0) System.out.print("|");
+                if (j == 0) System.out.print("| ");
                 System.out.print(matrix[i][j] + " ");
-                if (j == columns-1) System.out.print("|");
+                if (j == columns-1) System.out.print(" |");
             }
             System.out.println();
         }
