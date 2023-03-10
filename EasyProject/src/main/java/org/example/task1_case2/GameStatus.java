@@ -1,7 +1,7 @@
 package org.example.task1_case2;
 
 public class GameStatus {
-    public static char diagonalCheck(char[][] matrix, int col, int row) throws ArrayIndexOutOfBoundsException{
+    private static char diagonalCheck(char[][] matrix, int col, int row) throws ArrayIndexOutOfBoundsException{
         for (int i = 0; i < col; i++) {
             for (int j = 0; j < row; j++) {
                 if (i == 0 && j == 0) {
@@ -9,8 +9,8 @@ public class GameStatus {
                         if (matrix[i][j] == 'X') return 'X';
                         if (matrix[i][j] == 'O') return 'O';
                     }
-                } else if (i == col - 1 && j == row - 1) {
-                    if (matrix[i][j] == matrix[i - 1][j - 1] && matrix[i][j] == matrix[i - 2][j - 2]) {
+                } else if (i == col - 1 && j == 0) {
+                    if (matrix[i][j] == matrix[i - 1][j+1] && matrix[i][j] == matrix[i - 2][j + 2]) {
                         if (matrix[i][j] == 'X') return 'X';
                         if (matrix[i][j] == 'O') return 'O';
                     }
@@ -23,7 +23,7 @@ public class GameStatus {
         return '-';
     }
 
-    public static char horizontalCheck(char[][] matrix, int col, int row) {
+    private static char horizontalCheck(char[][] matrix, int col, int row) {
         for (int i = 0; i < col; i++) {
             for (int j = 0; j < row; j++) {
                 if (j == 0) {
@@ -43,7 +43,7 @@ public class GameStatus {
         return '-';
     }
 
-    public static char verticalCheck(char[][] matrix, int col, int row) {
+    private static char verticalCheck(char[][] matrix, int col, int row) {
         for (int i = 0; i < col; i++) {
             for (int j = 0; j < row; j++) {
                 if (i == 0) {
@@ -59,7 +59,7 @@ public class GameStatus {
         return '-';
     }
 
-    public static boolean fullnessCheck(char[][] matrix, int col, int row) {
+    static boolean fullnessCheck(char[][] matrix, int col, int row) {
         for (int i = 0; i < col; i++) {
             for (int j = 0; j < row; j++) {
                 if (matrix[i][j] == ' ') {

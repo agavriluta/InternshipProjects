@@ -1,12 +1,11 @@
 package org.example.task1_case2;
-
 import java.util.*;
 
 public class Matrix {
 
-    private char[][] matrix;
-    private int col;
-    private int row;
+    private final char[][] matrix;
+    private final int col;
+    private final int row;
 
     public Matrix(int col , int row){
         matrix = new char[col][row];
@@ -20,7 +19,7 @@ public class Matrix {
             for (int j = 0; j < row; j++) {
                 if (j == 0) System.out.print("| ");
                 System.out.print(matrix[i][j] + " ");
-                if (j == col-1) System.out.println(" |");
+                if (j == col-1) System.out.println("|");
             }
         }
         System.out.println("---------");
@@ -33,17 +32,37 @@ public class Matrix {
             }
         }
     }
-    public void fillMatrix() {
-        System.out.print("Enter the coordinates:");
+
+    public void fillMatrix(){
+        System.out.println("Enter the coordinates:");
         Scanner scanner = new Scanner(System.in);
-        int coordX = inputCoords(scanner);
-        int coordY = inputCoords(scanner);
-        char symbol = 'X';
-        char verification = matrix[coordX-1][coordY-1];
-        if (verification == ' ') {
-            matrix[coordX - 1][coordY - 1] = symbol;
+        int coordX = 0;
+        int coordY = 0;
+        boolean check = false;
+        while (!check) {
+            try {
+                coordX = scanner.nextInt();
+                coordY = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("You should enter numbers!");
+                System.out.print("Enter the coordinates:");
+                scanner.nextLine();
+                continue;
+            }
+
+            if (coordX < 1 || coordX > 3 || coordY < 1 || coordY > 3) {
+                System.out.println("Coordinates should be from 1 to 3!");
+                System.out.print("Enter the coordinates:");
+                continue;
+            }
+            check = true;
+        }
+        String verification = Character.toString(matrix[coordX - 1][coordY - 1]);
+        if (verification.isBlank()) {
+            matrix[coordX - 1][coordY - 1] = 'X';
         } else {
             System.out.println("This cell is occupied! Choose another one!");
+            System.out.print("Enter the coordinates:");
             fillMatrix();
         }
 
@@ -55,7 +74,7 @@ public class Matrix {
         Random random = new Random();
         int i = random.nextInt(diff + 1);
         i += min;
-    return  i;}
+        return  i;}
 
     public void aiMove(){
         int coordX = randomize();
@@ -65,7 +84,7 @@ public class Matrix {
         if (verification == ' ') {
             matrix[coordX - 1][coordY - 1] = symbol;
         } else {
-           aiMove();
+            aiMove();
 
         }
     }
@@ -77,6 +96,7 @@ public class Matrix {
             fillMatrix();
             printMatrix();
             if(!(GameStatus.gameStatus(matrix,col,row)).equals("Game not finished")) return GameStatus.gameStatus(matrix,col,row);
+            System.out.println("Making move level \"easy\"");
             aiMove();
             printMatrix();
             if(!(GameStatus.gameStatus(matrix,col,row)).equals("Game not finished")) return GameStatus.gameStatus(matrix,col,row);
@@ -87,53 +107,5 @@ public class Matrix {
         return "-";
     }
 
-//    private char inputSymbol(String symbols) {
-//        int temp = Integer.MAX_VALUE;
-//        char tempSymbol = ' ';
-//        char[] symbolsArr = symbols.toCharArray();
-//        Map<Character, Integer> amountOfEachSymbol = new HashMap<>();
-//        for (char c : symbolsArr) {
-//            if (c != '_') {
-//                if (amountOfEachSymbol.containsKey(c)) {
-//                    amountOfEachSymbol.put(c, amountOfEachSymbol.get(c) + 1);
-//                } else amountOfEachSymbol.put(c, 1);
-//            }
-//        }
-//        for (Map.Entry<Character, Integer> entry : amountOfEachSymbol.entrySet()) {
-//            char symbol = entry.getKey();
-//            int amounSymbol = entry.getValue();
-//            if (amounSymbol < temp || (symbol == 'X') && amounSymbol == temp ) {
-//                temp = amounSymbol;
-//                tempSymbol = symbol;
-//            }
-//        }
-//
-//        return tempSymbol;
-//    }
-
-    private int inputCoords(Scanner scanner) {
-
-        int coordinate = scanner.nextInt();
-        try {
-
-            if (!checkCoords(coordinate)) {
-                System.out.println("Coordinates should be from 1 to 3!");
-                System.out.print("Enter the coordinates:");
-                inputCoords(scanner);
-
-            }
-
-        } catch (InputMismatchException e) {
-            System.out.println("You should enter numbers!");
-            System.out.print("Enter the coordinates:");
-            inputCoords(scanner);
-
-        }
-        return coordinate;
-    }
-
-    private boolean checkCoords(int coord) {
-        return coord <= 3 && coord >= 1;
-    }
-
 }
+
