@@ -9,8 +9,8 @@ public class GameStatus {
                         if (matrix[i][j] == 'X') return 'X';
                         if (matrix[i][j] == 'O') return 'O';
                     }
-                } else if (i == col - 1 && j == row - 1) {
-                    if (matrix[i][j] == matrix[i - 1][j - 1] && matrix[i][j] == matrix[i - 2][j - 2]) {
+                } else if (i == col - 1 && j == 0) {
+                    if (matrix[i][j] == matrix[i - 1][j+1] && matrix[i][j] == matrix[i - 2][j + 2]) {
                         if (matrix[i][j] == 'X') return 'X';
                         if (matrix[i][j] == 'O') return 'O';
                     }
@@ -47,7 +47,7 @@ public class GameStatus {
         for (int i = 0; i < col; i++) {
             for (int j = 0; j < row; j++) {
                 if (i == 0) {
-                    if (matrix[i][j] == matrix[i + 1][j] && matrix[i][j] == matrix[i][i + 2]) {
+                    if (matrix[i][j] == matrix[i + 1][j] && matrix[i][j] == matrix[i+2][j]) {
                         if (matrix[i][j] == 'X') return 'X';
                         if (matrix[i][j] == 'O') return 'O';
                     }
