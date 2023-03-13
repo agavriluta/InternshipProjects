@@ -1,5 +1,4 @@
 package org.example.task1_case1;
-
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
