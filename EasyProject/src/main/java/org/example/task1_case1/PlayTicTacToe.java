@@ -5,26 +5,34 @@ import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
+public class PlayTicTacToe {
 
-        PlayTicTacToe.playTicTacToe();
+    public static void playTicTacToe()
+    {
+        char[][] gameArr = new char[3][3];
+        System.out.print("Enter the cells :");
+        String symbols = enterCells(3, 3, gameArr);
+        printMatrix(gameArr);
+        System.out.print("Enter the coordinates:");
+        fillMatrix(gameArr, symbols);
+        printMatrix(gameArr);
+        System.out.println(GameStatus.gameStatus(gameArr,3, 3));
     }
 
-    public static void printMatrix(char[][] matrix, int lines, int columns) {
+    protected static void printMatrix(char[][] matrix) {
         System.out.println("---------");
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < lines; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 if (j == 0) System.out.print("| ");
                 System.out.print(matrix[i][j] + " ");
-                if (j == columns - 1) System.out.print("|");
+                if (j == 3 - 1) System.out.print("|");
             }
             System.out.println();
         }
         System.out.println("---------");
     }
 
-    public static String eneterCells(int column, int line, char[][] matrix) {
+    protected static String enterCells(int column, int line, char[][] matrix) {
         Scanner scan = new Scanner(System.in);
         String symbols = scan.next();
         int count = 0;
@@ -34,7 +42,7 @@ public class Main {
                 if (!checkSymbol(symbolsChar[count])) {
                     System.out.println("You should enter only 'X', 'O' or '_' !");
                     System.out.print("Enter the cells :");
-                    eneterCells(column, line, matrix);
+                    enterCells(column, line, matrix);
                 } else {
                     if (symbolsChar[count] == '_') matrix[x][y] = ' ';
                     else matrix[x][y] = symbolsChar[count];
@@ -46,7 +54,7 @@ public class Main {
         return symbols;
     }
 
-    public static void fillMatrix(char[][] matrix, String symbols) {
+    protected static void fillMatrix(char[][] matrix, String symbols) {
         Scanner scanner = new Scanner(System.in);
         int coordX = 0;
         int coordY = 0;
@@ -87,7 +95,7 @@ public class Main {
     }
 
 
-    public static char inputSymbol(String symbols) {
+    protected static char inputSymbol(String symbols) {
         int temp = Integer.MAX_VALUE;
         char tempSymbol = ' ';
         char[] symbolsArr = symbols.toCharArray();
@@ -114,14 +122,4 @@ public class Main {
 
     }
 
-    /*public static char enterSymbol() {
-        Scanner scanner = new Scanner(System.in);
-        char symbol = scanner.next().charAt(0);
-        if (symbol != 'X' && symbol != '0') {
-            System.out.println("Enter only 'X' or 'O' ");
-            System.out.print("Enter please your symbol : ");
-            enterSymbol();
-        }
-        return symbol;
-    }*/
 }
