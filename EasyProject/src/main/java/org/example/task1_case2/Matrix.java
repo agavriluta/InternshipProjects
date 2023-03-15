@@ -92,16 +92,16 @@ public class Matrix {
     public String untilEnd(){
 
 
-        while ((!GameStatus.fullnessCheck(matrix,col,row))){
+        while ((!GameStatus.fullnessCheck(matrix))){
             fillMatrix();
             printMatrix();
-            if(!(GameStatus.gameStatus(matrix,col,row)).equals("Game not finished")) return GameStatus.gameStatus(matrix,col,row);
+            if(!(GameStatus.gameStatus(matrix)).equals(GameStatus.GameState.GAME_NOT_FINISHED.getState())) return GameStatus.gameStatus(matrix);
             System.out.println("Making move level \"easy\"");
             aiMove();
             printMatrix();
-            if(!(GameStatus.gameStatus(matrix,col,row)).equals("Game not finished")) return GameStatus.gameStatus(matrix,col,row);
+            if(!(GameStatus.gameStatus(matrix)).equals("Game not finished")) return GameStatus.gameStatus(matrix);
         }
-        if(!(GameStatus.gameStatus(matrix,col,row)).equals("X wins") || !(GameStatus.gameStatus(matrix,col,row)).equals("O wins")) return GameStatus.gameStatus(matrix,col,row);
+        if(!(GameStatus.gameStatus(matrix)).equals("X wins") || !(GameStatus.gameStatus(matrix)).equals("O wins")) return GameStatus.gameStatus(matrix);
 
 
         return "-";
