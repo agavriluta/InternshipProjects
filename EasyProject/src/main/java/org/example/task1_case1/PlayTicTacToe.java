@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class PlayTicTacToe {
 
-    public static void playTicTacToe()
+    protected static void playTicTacToe()
     {
         char[][] gameArr = new char[3][3];
         System.out.print("Enter the cells :");
@@ -15,10 +15,10 @@ public class PlayTicTacToe {
         System.out.print("Enter the coordinates:");
         fillMatrix(gameArr, symbols);
         printMatrix(gameArr);
-        System.out.println(GameStatus.gameStatus(gameArr,3, 3));
+        System.out.println(GameStatus.gameStatus(gameArr));
     }
 
-    protected static void printMatrix(char[][] matrix) {
+    private static void printMatrix(char[][] matrix) {
         System.out.println("---------");
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -31,7 +31,7 @@ public class PlayTicTacToe {
         System.out.println("---------");
     }
 
-    protected static String enterCells(int column, int line, char[][] matrix) {
+    private static String enterCells(int column, int line, char[][] matrix) {
         Scanner scan = new Scanner(System.in);
         String symbols = scan.next();
         int count = 0;
@@ -53,7 +53,7 @@ public class PlayTicTacToe {
         return symbols;
     }
 
-    protected static void fillMatrix(char[][] matrix, String symbols) {
+    private static void fillMatrix(char[][] matrix, String symbols) {
         Scanner scanner = new Scanner(System.in);
         int coordX = 0;
         int coordY = 0;
@@ -89,12 +89,12 @@ public class PlayTicTacToe {
 
     }
 
-    public static boolean checkSymbol(char s) {
+    private static boolean checkSymbol(char s) {
         return s == 'X' || s == 'O' || s == '_';
     }
 
 
-    protected static char inputSymbol(String symbols) {
+    private static char inputSymbol(String symbols) {
         int temp = Integer.MAX_VALUE;
         char tempSymbol = ' ';
         char[] symbolsArr = symbols.toCharArray();
