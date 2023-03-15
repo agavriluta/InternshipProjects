@@ -1,6 +1,16 @@
 package org.example.task1_case1;
 
 public class GameStatus {
+
+    enum GameState{
+        X_WINS("X wins"),
+        O_WINS("O wins"),
+        DRAW("Draw"),
+        GAME_NOT_FINISHED("Game not finished");
+
+        GameState(String s) {
+        }
+    }
     private static char diagonalCheck(char[][] matrix){
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -70,34 +80,34 @@ public class GameStatus {
         return true;
     }
 
-     protected static String gameStatus(char[][] matrix) {
+     protected static GameState gameStatus(char[][] matrix) {
         char diagonal = diagonalCheck(matrix);
         char horizontal = horizontalCheck(matrix);
         char vertical = verticalCheck(matrix);
         boolean full = fullnessCheck(matrix);
 
         if (full) {
-            if (diagonal == 'X') return "X wins";
-            else if (diagonal == 'O') return "O wins";
+            if (diagonal == 'X') return GameState.X_WINS;
+            else if (diagonal == 'O') return GameState.O_WINS;
 
-            else if (horizontal == 'X') return "X wins";
-            else if (horizontal == 'O') return "O wins";
+            else if (horizontal == 'X') return GameState.X_WINS;
+            else if (horizontal == 'O') return GameState.O_WINS;
 
-            else if (vertical == 'X') return "X wins";
-            else if (vertical == 'O') return "O wins";
+            else if (vertical == 'X') return GameState.X_WINS;
+            else if (vertical == 'O') return GameState.O_WINS;
 
-            else return "Draw";
+            else return GameState.DRAW;
         } else {
-            if (diagonal == 'X') return "X wins";
-            else if (diagonal == 'O') return "O wins";
+            if (diagonal == 'X') return GameState.X_WINS;
+            else if (diagonal == 'O') return GameState.O_WINS;
 
-            else if (horizontal == 'X') return "X wins";
-            else if (horizontal == 'O') return "O wins";
+            else if (horizontal == 'X') return GameState.X_WINS;
+            else if (horizontal == 'O') return GameState.O_WINS;
 
-            else if (vertical == 'X') return "X wins";
-            else if (vertical == 'O') return "O wins";
+            else if (vertical == 'X') return GameState.X_WINS;
+            else if (vertical == 'O') return GameState.O_WINS;
 
-            else return "Game not finished";
+            else return GameState.GAME_NOT_FINISHED;
         }
 
     }
