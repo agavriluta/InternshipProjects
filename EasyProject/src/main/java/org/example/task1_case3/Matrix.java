@@ -1,8 +1,18 @@
 package org.example.task1_case3;
 import java.util.*;
-
 public class Matrix {
 
+    public enum Commands{
+        DOUBLE_USER("start user user"),
+        AI_USER("start easy user"),
+        USER_AI("start user easy"),
+        AI("start easy easy"),
+        EXIT("exit");
+
+        Commands(String line){
+
+        }
+    }
     private final char[][] matrix;
     private final int col;
     private final int row;
@@ -34,31 +44,20 @@ public class Matrix {
 
 
     public void playTicTacToe(){
+        System.out.print("Input command:");
         inputCommand();
     }
     public void inputCommand(){
         Scanner scan = new Scanner(System.in);
-        System.out.print("Input command:");
-        String option = scan.nextLine();
-
-        if ("start easy easy".trim().equals(option.trim()) ) {
-            Game.playAI(matrix);
-        }
-        else if("start easy user".trim().equals(option.trim()) ){
-            Game.playAiUser(matrix);
-        }
-        else if ("start user user".trim().equals(option.trim())) {
-            Game.playUsers(matrix);
-        }
-        else if("exit".trim().equals(option.trim())){
-
-        }
-        else if("start user easy".trim().equals(option.trim()) ){
-            Game.playUserAi(matrix);
-        }
-        else{
-            System.out.println("Bad parameters!");
-            inputCommand();
+        Commands option = Commands.valueOf(scan.nextLine());
+        switch (option){
+            case AI : Game.playAI(matrix); break;
+            case AI_USER : Game.playAiUser(matrix);break;
+            case DOUBLE_USER: Game.playUsers(matrix);break;
+            case EXIT: break;
+            case USER_AI : Game.playUserAi(matrix); break;
+            default: System.out.println("Bad parameters!"); inputCommand();
+            break;
         }
     }
 
