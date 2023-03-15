@@ -9,9 +9,10 @@ public class Matrix {
         AI("start easy easy"),
         EXIT("exit");
 
-        Commands(String line){
+       Commands(String line){
 
         }
+
     }
     private final char[][] matrix;
     private final int col;
@@ -48,6 +49,7 @@ public class Matrix {
         inputCommand();
     }
     public void inputCommand(){
+
         Scanner scan = new Scanner(System.in);
         Commands option = Commands.valueOf(scan.nextLine());
         switch (option){
