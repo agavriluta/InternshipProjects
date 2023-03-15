@@ -10,7 +10,7 @@ public class Game {
         int count = 0;
         char symbol;
         {
-            while (GameStatus.gameStatus(newMatrix.getMatrix(), newMatrix.getCol(), newMatrix.getRow()).equals("Game not finished")) {
+            while (GameStatus.gameStatus(newMatrix.getMatrix()).equals("Game not finished")) {
                 if (count%2==0) symbol = 'X';
                 else symbol = 'O';
                 System.out.println("Making move level \"easy\"");
@@ -18,7 +18,7 @@ public class Game {
                 newMatrix.printMatrix();
                 count++;
             }
-            System.out.println(GameStatus.gameStatus(newMatrix.getMatrix(), newMatrix.getCol(), newMatrix.getRow()));
+            System.out.println(GameStatus.gameStatus(newMatrix.getMatrix()));
 
 
         }
@@ -27,19 +27,19 @@ public class Game {
         Matrix newMatrix = new Matrix(matrix, 3, 3);
         newMatrix.emptyMatrix();
         newMatrix.printMatrix();
-        while (GameStatus.gameStatus(newMatrix.getMatrix(), newMatrix.getCol(), newMatrix.getRow()).equals("Game not finished")) {
+        while (GameStatus.gameStatus(newMatrix.getMatrix(),).equals("Game not finished")) {
 
             newMatrix.fillMatrix();
             newMatrix.printMatrix();
         }
-        System.out.println(GameStatus.gameStatus(newMatrix.getMatrix(), newMatrix.getCol(), newMatrix.getRow()));
+        System.out.println(GameStatus.gameStatus(newMatrix.getMatrix()));
     }
 
     public static void playUserAi (char[][] matrix){
         Matrix newMatrix = new Matrix(matrix, 3, 3);
         newMatrix.emptyMatrix();
         newMatrix.printMatrix();
-        while (GameStatus.gameStatus(newMatrix.getMatrix(), newMatrix.getCol(), newMatrix.getRow()).equals("Game not finished")) {
+        while (GameStatus.gameStatus(newMatrix.getMatrix()).equals("Game not finished")) {
 
             System.out.println("Making move level \"easy\"");
             newMatrix.fillMatrix();
@@ -47,13 +47,13 @@ public class Game {
             newMatrix.aiMove('O');
             newMatrix.printMatrix();
         }
-        System.out.println(GameStatus.gameStatus(newMatrix.getMatrix(), newMatrix.getCol(), newMatrix.getRow()));
+        System.out.println(GameStatus.gameStatus(newMatrix.getMatrix(),));
     }
     public static void playAiUser (char[][] matrix){
         Matrix newMatrix = new Matrix(matrix, 3, 3);
         newMatrix.emptyMatrix();
         newMatrix.printMatrix();
-        while (GameStatus.gameStatus(newMatrix.getMatrix(), newMatrix.getCol(), newMatrix.getRow()).equals("Game not finished")) {
+        while (GameStatus.gameStatus(newMatrix.getMatrix()).equals("Game not finished")) {
 
             System.out.println("Making move level \"easy\"");
             newMatrix.aiMove('X');
@@ -61,6 +61,6 @@ public class Game {
             newMatrix.fillMatrix();
             newMatrix.printMatrix();
         }
-        System.out.println(GameStatus.gameStatus(newMatrix.getMatrix(), newMatrix.getCol(), newMatrix.getRow()));
+        System.out.println(GameStatus.gameStatus(newMatrix.getMatrix()));
     }
 }
