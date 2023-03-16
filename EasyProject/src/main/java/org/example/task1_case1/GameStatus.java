@@ -8,7 +8,13 @@ public class GameStatus {
         DRAW("Draw"),
         GAME_NOT_FINISHED("Game not finished");
 
-        GameState(String s) {
+        private final String state;
+         GameState(String state) {
+            this.state = state;
+        }
+
+        public String getState() {
+            return state;
         }
     }
     private static char diagonalCheck(char[][] matrix){
@@ -80,34 +86,34 @@ public class GameStatus {
         return true;
     }
 
-     protected static GameState gameStatus(char[][] matrix) {
+     protected static String gameStatus(char[][] matrix) {
         char diagonal = diagonalCheck(matrix);
         char horizontal = horizontalCheck(matrix);
         char vertical = verticalCheck(matrix);
         boolean full = fullnessCheck(matrix);
 
         if (full) {
-            if (diagonal == 'X') return GameState.X_WINS;
-            else if (diagonal == 'O') return GameState.O_WINS;
+            if (diagonal == 'X') return GameState.X_WINS.getState();
+            else if (diagonal == 'O') return GameState.O_WINS.getState();
 
-            else if (horizontal == 'X') return GameState.X_WINS;
-            else if (horizontal == 'O') return GameState.O_WINS;
+            else if (horizontal == 'X') return GameState.X_WINS.getState();
+            else if (horizontal == 'O') return GameState.O_WINS.getState();
 
-            else if (vertical == 'X') return GameState.X_WINS;
-            else if (vertical == 'O') return GameState.O_WINS;
+            else if (vertical == 'X') return GameState.X_WINS.getState();
+            else if (vertical == 'O') return GameState.O_WINS.getState();
 
-            else return GameState.DRAW;
+            else return GameState.DRAW.getState();
         } else {
-            if (diagonal == 'X') return GameState.X_WINS;
-            else if (diagonal == 'O') return GameState.O_WINS;
+            if (diagonal == 'X') return GameState.X_WINS.getState();
+            else if (diagonal == 'O') return GameState.O_WINS.getState();
 
-            else if (horizontal == 'X') return GameState.X_WINS;
-            else if (horizontal == 'O') return GameState.O_WINS;
+            else if (horizontal == 'X') return GameState.X_WINS.getState();
+            else if (horizontal == 'O') return GameState.O_WINS.getState();
 
-            else if (vertical == 'X') return GameState.X_WINS;
-            else if (vertical == 'O') return GameState.O_WINS;
+            else if (vertical == 'X') return GameState.X_WINS.getState();
+            else if (vertical == 'O') return GameState.O_WINS.getState();
 
-            else return GameState.GAME_NOT_FINISHED;
+            else return GameState.GAME_NOT_FINISHED.getState();
         }
 
     }
