@@ -1,5 +1,9 @@
 package org.example.task1_case3;
 import java.util.*;
+
+//import static org.example.task1_case3.Matrix.Commands.*;
+//import static sun.tools.jconsole.Messages.EXIT;
+
 public class Matrix {
 
     public enum Commands{
@@ -8,11 +12,13 @@ public class Matrix {
         USER_AI("start user easy"),
         AI("start easy easy"),
         EXIT("exit");
-
+private final String field;
        Commands(String line){
-
+           this.field =line;
         }
-
+public String getField(){
+           return this.field;
+}
     }
     private final char[][] matrix;
     private final int col;
@@ -51,9 +57,15 @@ public class Matrix {
     public void inputCommand(){
 
         Scanner scan = new Scanner(System.in);
-        Commands option = Commands.valueOf(scan.nextLine());
+        var input = scan.nextLine();
+        var option = Arrays.stream(Commands.values())
+                .filter(enum1 -> enum1.getField()
+                        .equals(input))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("invalid input"));
+
         switch (option){
-            case AI : Game.playAI(matrix); break;
+            case AI: Game.playAI(matrix); break;
             case AI_USER : Game.playAiUser(matrix);break;
             case DOUBLE_USER: Game.playUsers(matrix);break;
             case EXIT: break;

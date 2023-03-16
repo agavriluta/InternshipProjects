@@ -27,7 +27,7 @@ public class Game {
         Matrix newMatrix = new Matrix(matrix, 3, 3);
         newMatrix.emptyMatrix();
         newMatrix.printMatrix();
-        while (GameStatus.gameStatus(newMatrix.getMatrix(),).equals("Game not finished")) {
+        while (GameStatus.gameStatus(newMatrix.getMatrix()).equals("Game not finished")) {
 
             newMatrix.fillMatrix();
             newMatrix.printMatrix();
@@ -47,7 +47,7 @@ public class Game {
             newMatrix.aiMove('O');
             newMatrix.printMatrix();
         }
-        System.out.println(GameStatus.gameStatus(newMatrix.getMatrix(),));
+        System.out.println(GameStatus.gameStatus(newMatrix.getMatrix()));
     }
     public static void playAiUser (char[][] matrix){
         Matrix newMatrix = new Matrix(matrix, 3, 3);
