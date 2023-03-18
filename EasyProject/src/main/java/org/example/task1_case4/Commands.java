@@ -5,6 +5,8 @@ public enum Commands{
     AI_USER("start easy user"),
     USER_AI("start user easy"),
     AI("start easy easy"),
+    M_AI_USER("start medium user"),
+    M_USER_AI("start user medium"),
     EXIT("exit");
     private final String field;
     Commands(String field){
