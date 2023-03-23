@@ -1,6 +1,8 @@
 package org.example.task1_case3;
 import java.util.*;
 
+import static org.example.task1_case3.Matrix.Commands.AI;
+
 //import static org.example.task1_case3.Matrix.Commands.*;
 //import static sun.tools.jconsole.Messages.EXIT;
 
@@ -11,7 +13,8 @@ public class Matrix {
         AI_USER("start easy user"),
         USER_AI("start user easy"),
         AI("start easy easy"),
-        EXIT("exit");
+        EXIT("exit"),
+        DEFAULT("default");
 private final String field;
        Commands(String line){
            this.field =line;
@@ -57,12 +60,12 @@ public String getField(){
     public void inputCommand(){
 
         Scanner scan = new Scanner(System.in);
-        var input = scan.nextLine();
-        var option = Arrays.stream(Commands.values())
+        Object input = scan.nextLine();
+        Commands option = Arrays.stream(Commands.values())
                 .filter(enum1 -> enum1.getField()
                         .equals(input))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("invalid input"));
+                .orElse(Commands.DEFAULT);
 
         switch (option){
             case AI: Game.playAI(matrix); break;
@@ -70,7 +73,8 @@ public String getField(){
             case DOUBLE_USER: Game.playUsers(matrix);break;
             case EXIT: break;
             case USER_AI : Game.playUserAi(matrix); break;
-            default: System.out.println("Bad parameters!"); inputCommand();
+            case DEFAULT : System.out.println("Bad parameters!");
+                System.out.print("Input command:");inputCommand();
             break;
         }
     }
