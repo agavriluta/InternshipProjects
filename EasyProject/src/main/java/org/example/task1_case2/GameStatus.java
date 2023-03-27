@@ -1,6 +1,22 @@
-package org.example.task1.case4;
+package org.example.task1_case2;
 
 public class GameStatus {
+
+    enum GameState{
+        X_WINS("X wins"),
+        O_WINS("O wins"),
+        DRAW("Draw"),
+        GAME_NOT_FINISHED("Game not finished");
+
+        private final String state;
+        private GameState(String state) {
+            this.state = state;
+        }
+
+        public String getState() {
+            return state;
+        }
+    }
     private static char diagonalCheck(char[][] matrix) throws ArrayIndexOutOfBoundsException{
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -9,7 +25,7 @@ public class GameStatus {
                         if (matrix[i][j] == 'X') return 'X';
                         if (matrix[i][j] == 'O') return 'O';
                     }
-                } else if (i == 3 - 1 && j == 0) {
+                } else if (i == 2 && j == 0) {
                     if (matrix[i][j] == matrix[i - 1][j+1] && matrix[i][j] == matrix[i - 2][j + 2]) {
                         if (matrix[i][j] == 'X') return 'X';
                         if (matrix[i][j] == 'O') return 'O';
@@ -62,7 +78,7 @@ public class GameStatus {
     static boolean fullnessCheck(char[][] matrix) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (!Character.toString(matrix[i][j]).isEmpty() && Character.toString(matrix[i][j]) != null) {
+                if (matrix[i][j] == ' ') {
                     return false;
                 }
             }
@@ -77,27 +93,27 @@ public class GameStatus {
         boolean full = fullnessCheck(matrix);
 
         if (full) {
-            if (diagonal == 'X') return "X wins";
-            else if (diagonal == 'O') return "O wins";
+            if (diagonal == 'X') return GameState.X_WINS.getState();
+            else if (diagonal == 'O') return GameState.O_WINS.getState();
 
-            else if (horizontal == 'X') return "X wins";
-            else if (horizontal == 'O') return "O wins";
+            else if (horizontal == 'X') return GameState.X_WINS.getState();
+            else if (horizontal == 'O') return GameState.O_WINS.getState();
 
-            else if (vertical == 'X') return "X wins";
-            else if (vertical == 'O') return "O wins";
+            else if (vertical == 'X') return GameState.X_WINS.getState();
+            else if (vertical == 'O') return GameState.O_WINS.getState();
 
-            else return "Draw";
+            else return GameState.DRAW.getState();
         } else {
-            if (diagonal == 'X') return "X wins";
-            else if (diagonal == 'O') return "O wins";
+            if (diagonal == 'X') return GameState.X_WINS.getState();
+            else if (diagonal == 'O') return GameState.O_WINS.getState();
 
-            else if (horizontal == 'X') return "X wins";
-            else if (horizontal == 'O') return "O wins";
+            else if (horizontal == 'X') return GameState.X_WINS.getState();
+            else if (horizontal == 'O') return GameState.O_WINS.getState();
 
-            else if (vertical == 'X') return "X wins";
-            else if (vertical == 'O') return "O wins";
+            else if (vertical == 'X') return GameState.X_WINS.getState();
+            else if (vertical == 'O') return GameState.O_WINS.getState();
 
-            else return "Game not finished";
+            else return GameState.GAME_NOT_FINISHED.getState();
         }
 
     }
