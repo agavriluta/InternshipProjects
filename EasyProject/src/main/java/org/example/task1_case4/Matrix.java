@@ -16,17 +16,17 @@ public class Matrix {
                .filter(enum1 -> enum1.getField()
                        .equals(input))
                .findFirst()
-               .orElseThrow(() -> new RuntimeException("invalid input"));
+               .orElse(Commands.DEFAULT);
 
        switch (option){
-           case AI: Game.playAI(matrix); break;
+           case AI: Game.playAI(); break;
            case AI_USER : Game.playAiUser(matrix);break;
            case DOUBLE_USER: Game.playUsers(matrix);break;
            case M_AI_USER: MediumLevel.playAiUser(matrix);
            case M_USER_AI: MediumLevel.playUserAi(matrix);
            case EXIT: break;
            case USER_AI : Game.playUserAi(matrix); break;
-           default: System.out.println("Bad parameters!"); inputCommand();
+           case DEFAULT: System.out.println("Bad parameters!"); inputCommand();
                break;
        }
            }

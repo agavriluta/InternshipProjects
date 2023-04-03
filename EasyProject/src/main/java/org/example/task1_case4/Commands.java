@@ -7,7 +7,8 @@ public enum Commands{
     AI("start easy easy"),
     M_AI_USER("start medium user"),
     M_USER_AI("start user medium"),
-    EXIT("exit");
+    EXIT("exit"),
+    DEFAULT("default");
     private final String field;
     Commands(String field){
         this.field = field;

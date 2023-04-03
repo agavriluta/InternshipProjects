@@ -11,7 +11,7 @@ public class GameStatus {
                         if (matrix[i][j] == 'X') return 'X';
                         if (matrix[i][j] == 'O') return 'O';
                     }
-                } else if (i == 3 - 1 && j == 0) {
+                } else if (i == 2 && j == 0) {
                     if (matrix[i][j] == matrix[i - 1][j+1] && matrix[i][j] == matrix[i - 2][j + 2]) {
                         if (matrix[i][j] == 'X') return 'X';
                         if (matrix[i][j] == 'O') return 'O';
@@ -64,7 +64,7 @@ public class GameStatus {
     static boolean fullnessCheck(char[][] matrix) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (!Character.toString(matrix[i][j]).isEmpty() && Character.toString(matrix[i][j]) != null) {
+                if (!Character.toString(matrix[i][j]).isEmpty()) {
                     return false;
                 }
             }
