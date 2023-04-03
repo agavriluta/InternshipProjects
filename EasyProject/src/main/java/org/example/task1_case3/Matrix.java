@@ -1,11 +1,6 @@
 package org.example.task1_case3;
 import java.util.*;
 
-import static org.example.task1_case3.Matrix.Commands.AI;
-
-//import static org.example.task1_case3.Matrix.Commands.*;
-//import static sun.tools.jconsole.Messages.EXIT;
-
 public class Matrix {
 
     public enum Commands{
@@ -24,31 +19,19 @@ public String getField(){
 }
     }
     private final char[][] matrix;
-    private final int col;
-    private final int row;
 
-    public int getCol() {
-        return col;
-    }
 
-    public int getRow() {
-        return row;
-    }
-
-    public Matrix(char[][] m, int col ,int row) {
-        matrix= new char[col][row];
-        for (int i = 0; i < col; i++) {
-            System.arraycopy(m[i], 0, matrix[i], 0, row);
+    public Matrix(char[][] m) {
+        matrix= new char[3][3];
+        for (int i = 0; i < 3; i++) {
+            System.arraycopy(m[i], 0, matrix[i], 0, 3);
 
         }
-        this.col=col;
-        this.row=row;
+
     }
 
-    public Matrix(int col , int row){
-        matrix = new char[col][row];
-        this.col = col;
-        this.row = row;
+    public Matrix(){
+        matrix = new char[3][3];
     }
 
 
@@ -82,19 +65,19 @@ public String getField(){
 
     public void printMatrix(){
         System.out.println("---------");
-        for (int i = 0; i < col; i++) {
-            for (int j = 0; j < row; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 if (j == 0) System.out.print("| ");
                 System.out.print(matrix[i][j] + " ");
-                if (j == col-1) System.out.println("|");
+                if (j == 2) System.out.println("|");
             }
         }
         System.out.println("---------");
     }
 
     public void emptyMatrix(){
-        for (int i = 0; i < col; i++) {
-            for (int j = 0; j < row; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 matrix[i][j]=' ';
             }
         }
