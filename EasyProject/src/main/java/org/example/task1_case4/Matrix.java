@@ -20,12 +20,12 @@ public class Matrix {
 
        switch (option){
            case AI: Game.playAI(); break;
-           case AI_USER : Game.playAiUser(matrix);break;
-           case DOUBLE_USER: Game.playUsers(matrix);break;
-           case M_AI_USER: MediumLevel.playAiUser(matrix);
-           case M_USER_AI: MediumLevel.playUserAi(matrix);
+           case AI_USER : Game.playAiUser();break;
+           case DOUBLE_USER: Game.playUsers();break;
+           case M_AI_USER: MediumLevel.playAiUser();
+           case M_USER_AI: MediumLevel.playUserAi();
            case EXIT: break;
-           case USER_AI : Game.playUserAi(matrix); break;
+           case USER_AI : Game.playUserAi(); break;
            case DEFAULT: System.out.println("Bad parameters!"); inputCommand();
                break;
        }
@@ -109,8 +109,8 @@ public class Matrix {
 
     public static void aiMoveMedium(char symbol ){
         String rez = MediumLevel.randomORnot( matrix , symbol);
-        int coordX = 0;
-        int coordY = 0;
+        int coordX ;
+        int coordY ;
         char[] s = rez.toCharArray();
         if(!Objects.equals(rez, "-")){
             coordX = Integer.parseInt(Character.toString(s[0]));

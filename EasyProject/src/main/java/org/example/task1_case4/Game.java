@@ -28,7 +28,7 @@ public class Game {
         }
     }
 
-    public static void playUsers(char[][] matrix) {
+    public static void playUsers() {
         start();
         int count = 0;
         char symbol;
@@ -43,7 +43,7 @@ public class Game {
         printGameStatus();
     }
 
-    public static void playUserAi(char[][] matrix) {
+    public static void playUserAi() {
         start();
         while (GameStatus.gameStatus(Matrix.getMatrix()).equals("Game not finished")) {
             Matrix.fillMatrix('X');
@@ -55,7 +55,7 @@ public class Game {
         printGameStatus();
     }
 
-    public static void playAiUser(char[][] matrix) {
+    public static void playAiUser() {
         start();
         while (GameStatus.gameStatus(Matrix.getMatrix()).equals("Game not finished")) {
 

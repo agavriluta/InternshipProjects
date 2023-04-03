@@ -49,17 +49,18 @@ public class MediumLevel {
         String temp2 = " ";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+                final var concat = Integer.toString(i).concat(Integer.toString(j));
                 switch (j) {
                     case 0 -> {
                         if (matrix[i][j] == matrix[i][j + 1] && matrix[i][j + 2] == ' ') {
-                            if (matrix[i][j] == 'X') temp1 = Integer.toString(i).concat(Integer.toString(j));
-                            if (matrix[i][j] == 'O') temp2 = Integer.toString(i).concat(Integer.toString(j));
+                            if (matrix[i][j] == 'X') temp1 = concat;
+                            if (matrix[i][j] == 'O') temp2 = concat;
                         }
                     }
                     case 2 -> {
                         if (matrix[i][j] == matrix[i][j - 1] && matrix[i][j - 2] == ' ') {
-                            if (matrix[i][j] == 'X') temp1 = Integer.toString(i).concat(Integer.toString(j));
-                            if (matrix[i][j] == 'O') temp2 = Integer.toString(i).concat(Integer.toString(j));
+                            if (matrix[i][j] == 'X') temp1 = concat;
+                            if (matrix[i][j] == 'O') temp2 = concat;
                         }
                     }
                 }
@@ -78,17 +79,18 @@ public class MediumLevel {
         String temp2 = " ";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+                final var concat = Integer.toString(i).concat(Integer.toString(j));
                 switch (i) {
                     case 0 -> {
                         if (matrix[i][j] == matrix[i + 1][j] && matrix[i + 2][j] == ' ') {
-                            if (matrix[i][j] == 'X') temp1 = Integer.toString(i).concat(Integer.toString(j));
-                            if (matrix[i][j] == 'O') temp2 = Integer.toString(i).concat(Integer.toString(j));
+                            if (matrix[i][j] == 'X') temp1 = concat;
+                            if (matrix[i][j] == 'O') temp2 = concat;
                         }
                     }
                     case 2 -> {
                         if (matrix[i][j] == matrix[i - 1][j] && matrix[i - 2][j] == ' ') {
-                            if (matrix[i][j] == 'X') temp1 = Integer.toString(i).concat(Integer.toString(j));
-                            if (matrix[i][j] == 'O') temp2 = Integer.toString(i).concat(Integer.toString(j));
+                            if (matrix[i][j] == 'X') temp1 = concat;
+                            if (matrix[i][j] == 'O') temp2 = concat;
                         }
                     }
                 }
@@ -121,7 +123,7 @@ public class MediumLevel {
         return rezult;
     }
 
-    public static void playUserAi(char[][] matrix) {
+    public static void playUserAi() {
         Game.start();
         while (GameStatus.gameStatus(Matrix.getMatrix()).equals("Game not finished")) {
             Matrix.fillMatrix('X');
@@ -134,7 +136,7 @@ public class MediumLevel {
         Game.printGameStatus();
     }
 
-    public static void playAiUser(char[][] matrix) {
+    public static void playAiUser() {
         Game.start();
         while (GameStatus.gameStatus(Matrix.getMatrix()).equals("Game not finished")) {
 
