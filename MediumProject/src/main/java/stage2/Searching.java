@@ -1,4 +1,4 @@
-package org.example.stage2;
+package stage2;
 import java.util.*;
 
 public class Searching {
