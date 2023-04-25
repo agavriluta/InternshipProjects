@@ -20,17 +20,14 @@ public class Menu {
     }
     private static final Map<String , Consumer<String>> actionsMap;
     static {
-        Consumer<String> find = (search) -> {
-            String input = scan.nextLine();
-            System.out.println("\nEnter a name or email to search all suitable people.");
-           SearchingEngine.searchPerson(input);
-        };
-        Consumer<String> print = (search) -> {
-            UsersDataOutput.printAllPeople();
-        };
-        actionsMap = new HashMap<>();
-        actionsMap.put("1" , find);
-        actionsMap.put("2" , print);
+        actionsMap = Map.of("1",
+                (search) -> {
+                    String input = scan.nextLine();
+                    System.out.println("\nEnter a name or email to search all suitable people.");
+                    SearchingEngine.searchPerson(input);},
+                "2",
+                (search) -> {
+                    UsersDataOutput.printAllPeople();});
     }
 
     public static void selectOption(){
