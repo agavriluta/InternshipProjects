@@ -38,12 +38,12 @@ public class Searching {
         }
     }
 
-    private static void printResult(Set<String> res) {
-        if (res.isEmpty()) System.out.println("No matching people found.");
+    private static void printResult(Set<String> foundPeopleList) {
+        if (foundPeopleList.isEmpty()) System.out.println("No matching people found.");
         else {
             System.out.println();
             System.out.println("Found people:");
-            res.forEach(System.out::println);
+            foundPeopleList.forEach(System.out::println);
             System.out.println();
         }
     }
