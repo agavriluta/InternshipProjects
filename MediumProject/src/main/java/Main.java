@@ -19,13 +19,12 @@ public class Main {
     }
     private static void startSearchingStage2(){
         Searching.searchEngine();
-
     }
     private static void startSearchingStage3(){
             UserDetails.setPeople();
             Menu.selectOption();
-
     }
+    
     private static void startSearchingStage4(String[] args) {
         if (Objects.equals(args[0], "--data") && args[1] != null) {
             File p = new File(args[1]);
