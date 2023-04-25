@@ -11,9 +11,7 @@ public class SearchingEngine {
     private static List<Person> searchUsers( String searchingWord) {
         return generalListOfUsers.stream().findAny()
                 .stream()
-                .filter(p -> p.getFirstName().toLowerCase().contains(searchingWord) ||
-                        p.getLastName().toLowerCase().contains(searchingWord) ||
-                        p.getEmail().toLowerCase().contains(searchingWord))
+                .filter(p -> p.toString().toLowerCase().contains(searchingWord))
                 .toList();
 
     }
