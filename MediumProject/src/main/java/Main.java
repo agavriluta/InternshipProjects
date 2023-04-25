@@ -1,3 +1,4 @@
+
 import stage3.Menu;
 import stage3.UserDetails;
 
@@ -8,6 +9,12 @@ public class Main {
     private static void startSearchingStage3(){
             UserDetails.setPeople();
             Menu.selectOption();
+
+import stage2.Searching;
+
+public class Main {
+    public static void main(String[] args) {
+        Searching.searchEngine();
 
     }
 }
