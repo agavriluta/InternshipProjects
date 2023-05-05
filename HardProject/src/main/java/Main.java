@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         startStage1();
         startStage2();
+        startStage3();
     }
     public static void startStage1(){
         Contacts contact1 = new Contacts();
@@ -14,6 +15,8 @@ public class Main {
     public static void startStage2(){
         PhoneBook.chooseMenuOption();
     }
-
+    public static void startStage3(){
+        stage3.PhoneBook.chooseMenuOption();
+    }
 
 }
