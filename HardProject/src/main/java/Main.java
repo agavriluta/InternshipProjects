@@ -1,5 +1,6 @@
 import stage1.Contacts;
 import stage2.PhoneBook;
+import stage4.Menu;
 
 public class Main {
 
@@ -7,6 +8,7 @@ public class Main {
         startStage1();
         startStage2();
         startStage3();
+        startStage4(args);
     }
     public static void startStage1(){
         Contacts contact1 = new Contacts();
@@ -17,6 +19,10 @@ public class Main {
     }
     public static void startStage3(){
         stage3.PhoneBook.chooseMenuOption();
+    }
+    public static void startStage4(String[] args){
+        Menu.loadContacts(args);
+        Menu.openMainMenuDialog();
     }
 
 }
